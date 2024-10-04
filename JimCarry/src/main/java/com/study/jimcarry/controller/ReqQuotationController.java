@@ -1,13 +1,11 @@
 package com.study.jimcarry.controller;
 
 import java.util.List;
-import java.util.Set;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -15,19 +13,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.study.jimcarry.api.ReqQuotaionResponse;
 import com.study.jimcarry.api.ReqQuotationRequest;
 import com.study.jimcarry.domain.ReqQuotationEntity;
-import com.study.jimcarry.exception.CustomException;
-import com.study.jimcarry.exception.ErrorCode;
 import com.study.jimcarry.model.ReqQuotation;
 import com.study.jimcarry.service.ReqQuotationService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Valid;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
@@ -35,7 +31,8 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Tag(name="ReqQuotation", description="ReqQuotation API")
-@Controller
+//@Controller
+@RestController
 @RequestMapping(value = "/api/req-quotation")
 public class ReqQuotationController {
 	
@@ -43,6 +40,8 @@ public class ReqQuotationController {
 	ReqQuotationService reqQuotationService;
 
 	Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
+	
+	//TODO Java @Bean으로 등록하기
 	private ModelMapper modelMapper = new ModelMapper();
 	
 	/**
@@ -57,6 +56,16 @@ public class ReqQuotationController {
     @Tag(name="ReqQuotaion")
     @Operation(summary = "Insert ReqQuotaion", description="견적요청서 저장")
 	public ResponseEntity<ReqQuotaionResponse> saveReqQuotation(@RequestBody @Valid ReqQuotationRequest reqeust, ReqQuotaionResponse response) throws Exception {
+    	
+    	//TODO 메소드 시그니처 측면에서 고민해볼 내용
+    	//TODO Response
+    	//response으로 인자를 받는 것이 어떤 차이가 있는지 알아볼것!
+    	//외부에서 인자가 어떻게 만들어지고 전달이 되는지 알아볼것!
+    	
+    	//TODO Exception
+    	//예외 처리 과정 공부하기
+    	
+    	//TODO 서블릿 컨테이너... 개념공부...
     	
     	//valid 체크 하고 싶은 필드가 있을 시 valids 배열에 기재
 //		String[] valids = {"ReqQuotationId"};

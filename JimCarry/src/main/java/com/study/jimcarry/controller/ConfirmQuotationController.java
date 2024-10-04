@@ -98,7 +98,7 @@ public class ConfirmQuotationController {
      * @throws Exception
      */
     @ResponseBody
-    @GetMapping(value = "/driver/{driverid}")
+    @GetMapping(value = "/drivers/{driverid}")
     @Tag(name="ConfirmQuotation")
     @Operation(summary = "get ConfirmQuotationList", description="기사님별 견적확정 정보 조회")
     public ResponseEntity<ConfirmQuotaionResponse> getConfirmQuotationList(@PathVariable("driverid") String driverId, ConfirmQuotaionResponse response) throws Exception {
